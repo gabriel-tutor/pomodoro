@@ -11,7 +11,6 @@ const PomodoroTimer = () => {
   const [isRunning, setIsRunning] = useState(false)
   const [mode, setMode] = useState<TimerMode>('work')
   const [completedSessions, setCompletedSessions] = useState(0)
-  const [totalSessions, setTotalSessions] = useState(0)
   const intervalRef = useRef<number | null>(null)
 
   const playNotificationSound = useCallback(() => {
@@ -40,7 +39,6 @@ const PomodoroTimer = () => {
     if (mode === 'work') {
       const newCompleted = completedSessions + 1
       setCompletedSessions(newCompleted)
-      setTotalSessions(newCompleted)
       
       // Every 4 work sessions, take a long break
       if (newCompleted % 4 === 0) {
